@@ -1,22 +1,11 @@
 import java.util.ArrayList;
 
-/* =========================================================
- * TASK 2: Implement Aggregation (HAS-A Relationship)
- * TASK 4: Method Overloading (Static Polymorphism)
- * =========================================================
- * Course HAS-A Professor (instructor) and HAS-MANY Students.
- * These objects are created OUTSIDE this class and simply
- * passed in -> that is what makes this "aggregation".
- *
- * The two enrollStudent() methods below (one Student vs. a whole
- * ArrayList<Student>) are the TASK 4 method-overloading requirement.
- */
 class Course {
 
     private String courseCode;
     private String courseName;
-    private Professor instructor;                 // HAS-A Professor
-    private ArrayList<Student> enrolledStudents;   // HAS-MANY Students
+    private Professor instructor;
+    private ArrayList<Student> enrolledStudents;
 
     public Course(String courseCode, String courseName, Professor instructor) {
         this.courseCode = courseCode;
@@ -25,7 +14,6 @@ class Course {
         this.enrolledStudents = new ArrayList<>();
     }
 
-    // Accessors / Mutators
     public String getCourseCode() {
         return courseCode;
     }
@@ -54,28 +42,15 @@ class Course {
         return enrolledStudents;
     }
 
-    /**
-     * TASK 4 - Overload #1: enroll ONE student.
-     */
+
     public void enrollStudent(Student s) {
         enrolledStudents.add(s);
     }
 
-    /**
-     * TASK 4 - Overload #2: enroll a WHOLE LIST of students at once.
-     * Same method name, different parameter type = Method Overloading
-     * (resolved at COMPILE time, hence "static polymorphism").
-     */
     public void enrollStudent(ArrayList<Student> studentList) {
         enrolledStudents.addAll(studentList);
     }
 
-    /**
-     * TASK 2 - Prints the course info and the class list.
-     * Calling s.toString() here triggers RUNTIME polymorphism: the JVM
-     * looks at the actual object (Student) and runs ITS toString(),
-     * not some generic version. This is dynamic method dispatch.
-     */
     public void printClassList() {
         System.out.println("=======================================");
         System.out.println("Course Code : " + courseCode);

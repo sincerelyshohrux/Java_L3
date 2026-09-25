@@ -12,14 +12,11 @@ class UniversityLab {
         Student stu3 = new Student(203, "Sardor Tashkentov", 3.9);
         Student stu4 = new Student(204, "Dilnoza Karimova", 3.2);
 
-        // Step 3: create a Staff object
         Staff staff1 = new Staff(301, "Nodira Azimova", "Admin Assistant");
 
-        // Step 4: create Courses, assigning a professor to each
         Course course1 = new Course("SOC2030", "Application Programming in Java", prof1);
         Course course2 = new Course("CSE1010", "Introduction to Programming", prof2);
 
-        // Step 5: enroll different students in each course
         course1.enrollStudent(stu1);
         course1.enrollStudent(stu2);
         course2.enrollStudent(stu3);
@@ -28,9 +25,6 @@ class UniversityLab {
         course1.printClassList();
         course2.printClassList();
 
-        // Step 6: ArrayList<CommunityMember> - UPCASTING
-        // Professor, Student, and Staff objects are all stored using
-        // their common superclass type, CommunityMember.
         ArrayList<CommunityMember> allMembers = new ArrayList<>();
         allMembers.add(prof1);
         allMembers.add(prof2);
@@ -40,9 +34,6 @@ class UniversityLab {
         allMembers.add(stu4);
         allMembers.add(staff1);
 
-        // Step 7: THE POLYMORPHIC LOOP
-        // Even though 'member' is typed as CommunityMember, Java calls
-        // each object's OWN overridden toString()/getRole() at runtime.
         System.out.println("\n--- All Community Members (Polymorphic Loop) ---");
         for (CommunityMember member : allMembers) {
             System.out.println(member.toString() + " | Role: " + member.getRole());
